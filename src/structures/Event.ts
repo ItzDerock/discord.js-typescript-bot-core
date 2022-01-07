@@ -1,6 +1,6 @@
 import { Client } from "discord.js";
 
-export default class SlashCommand {
+export default class Event {
     name: string;
     event: string;
 
@@ -9,15 +9,15 @@ export default class SlashCommand {
         this.event = event;
     }
 
-    exec() {
+    exec(...any: any[]) {
         throw new Error("Method not implemented.");
     }
 
     register(client: Client) {
-        client.on(this.name, this.exec);
+        client.on(this.event, this.exec);
     }
 
     unregister(client: Client) {
-        client.removeListener(this.name, this.exec);
+        client.removeListener(this.event, this.exec);
     }
 }

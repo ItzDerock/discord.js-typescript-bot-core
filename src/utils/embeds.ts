@@ -1,13 +1,10 @@
-import config from '../config.json';
 import Discord from 'discord.js';
+import getConfig from './config';
+
+const config = getConfig();
 
 export const primaryEmbed = (title="", description="") => 
-    new Discord.MessageEmbed({ title, description, color: HEXToVBColor(config.embeds.primary) })
+    new Discord.MessageEmbed({ ...config.embeds.primary, title, description })
 
 export const errorEmbed = (title="", description="") => 
-    new Discord.MessageEmbed({ title, description, color: HEXToVBColor(config.embeds.error) })
-
-function HEXToVBColor(rrggbb: string) {
-    var bbggrr = rrggbb.substr(4, 2) + rrggbb.substr(2, 2) + rrggbb.substr(0, 2);
-    return parseInt(bbggrr, 16);
-}
+    new Discord.MessageEmbed({ ...config.embeds.error, title, description })

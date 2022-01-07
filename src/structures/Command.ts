@@ -1,14 +1,20 @@
-import { Client, Interaction } from "discord.js";
+import { Client, Interaction, PermissionResolvable } from "discord.js";
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { RESTPostAPIApplicationCommandsJSONBody } from "discord-api-types";
+
+export type SlashCommandOptions = {
+    requiredPermissions: PermissionResolvable[]
+}
 
 export default class SlashCommand {
     name: string;
     description: string;
+    options: SlashCommandOptions | undefined;
 
-    constructor(name: string, description: string) {
+    constructor(name: string, description: string, options?: SlashCommandOptions) {
         this.name = name;
         this.description = description;
+        this.options = options;
     }
 
     exec(interaction: Interaction) {
@@ -16,6 +22,8 @@ export default class SlashCommand {
     }
 
     build(client: Client): SlashCommandBuilder | RESTPostAPIApplicationCommandsJSONBody {
-        throw new Error("Method not implemented.");
+        return new SlashCommandBuilder()
+            .setName(this.name)
+            .setDescription(this.description)
     }
 }
