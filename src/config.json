@@ -1,7 +1,0 @@
-{
-    "token": "your token here",
-    "embeds": {
-        "primary": "#00ff00",
-        "error": "#ff0000"
-    }
-}
