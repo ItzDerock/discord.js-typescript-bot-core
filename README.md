@@ -3,6 +3,25 @@ This repository is a template for creating a Discord bot using Discord.js v13 wi
 
 > This project is for people familiar with TypeScript and Discord.js. Do NOT use if you are unfamiliar with either.
 > No Discord.js/TypeScript support will be given!
+ 
+---
+## Table of Contents
+1. **Create a project**
+    1. [With GitHub](https://github.com/ItzDerock/discord.js-typescript-bot-core/blob/main/README.md#creating-a-project-with-github)
+    2. [Without GitHub](https://github.com/ItzDerock/discord.js-typescript-bot-core/blob/main/README.md#creating-a-project-without-github)
+        1. [Using Git CLI](https://github.com/ItzDerock/discord.js-typescript-bot-core/blob/main/README.md#clone-the-repository-using-the-git-cli)
+        2. [By Downloading](https://github.com/ItzDerock/discord.js-typescript-bot-core/blob/main/README.md#clone-the-repository-without-git)
+2. [Creating Slash Commands](https://github.com/ItzDerock/discord.js-typescript-bot-core/blob/main/README.md#creating-slash-commands)
+3. [Deploying/Registering Slash Commands](https://github.com/ItzDerock/discord.js-typescript-bot-core/blob/main/README.md#register-slash-commands)
+4. [Creating Events](https://github.com/ItzDerock/discord.js-typescript-bot-core/blob/main/README.md#register-events)
+5. [Access the Client object](https://github.com/ItzDerock/discord.js-typescript-bot-core/blob/main/README.md#accessing-the-client)
+6. [Utils](https://github.com/ItzDerock/discord.js-typescript-bot-core/blob/main/README.md#util-functions)
+    1. [Logging](https://github.com/ItzDerock/discord.js-typescript-bot-core/blob/main/README.md#logging-srcutilsloggerts)
+    2. [Embeds](https://github.com/ItzDerock/discord.js-typescript-bot-core/blob/main/README.md#embed-utils-srcutilsembedsts)
+    3. [Config](https://github.com/ItzDerock/discord.js-typescript-bot-core/blob/main/README.md#config-loader-srcutilsconfigts)
+7. [Config File](https://github.com/ItzDerock/discord.js-typescript-bot-core/blob/main/README.md#config)
+
+---
 
 ## Creating a project **with github**.
 If you plan on using github in your project, simply click the `Use this template` button to get started.
@@ -22,6 +41,11 @@ Copy and paste the `example.ts` file.
 
 ### Changing the command name/description.
 1. Change `super("example", "An example command.");`. The first argument is the command name, and the second is a command description.
+2. A third optional paramemeter can be supplied with the following options:
+
+| Key | Description | Default |
+| :-- | :-- | :-- |
+| `requiredPermissions` | An array of PermissionResolvables that contains the required permissions to use this command | `undefined` |
 
 ### Adding command options.
 1. Add a function to the class called `build` that takes in one argument (client) and returns either `SlashCommandBuilder` from @discordjs/builders or `RESTPostAPIApplicationCommandsJSONBody` from discord-api-types.
