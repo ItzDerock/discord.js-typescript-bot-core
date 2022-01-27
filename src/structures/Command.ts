@@ -1,29 +1,21 @@
-import { Client, Interaction, PermissionResolvable } from "discord.js";
-import { SlashCommandBuilder } from "@discordjs/builders";
-import { RESTPostAPIApplicationCommandsJSONBody } from "discord-api-types";
+import { Message, PermissionResolvable } from "discord.js";
 
-export type SlashCommandOptions = {
+export type CommandOptions = {
     requiredPermissions: PermissionResolvable[]
 }
 
-export default class SlashCommand {
+export default class PrefixedCommand {
     name: string;
     description: string;
-    options: SlashCommandOptions | undefined;
+    options: CommandOptions | undefined;
 
-    constructor(name: string, description: string, options?: SlashCommandOptions) {
+    constructor(name: string, description: string, options?: CommandOptions) {
         this.name = name;
         this.description = description;
         this.options = options;
     }
 
-    exec(interaction: Interaction) {
+    exec(message: Message, args: string[]) {
         throw new Error("Method not implemented.");
-    }
-
-    build(client: Client): SlashCommandBuilder | RESTPostAPIApplicationCommandsJSONBody {
-        return new SlashCommandBuilder()
-            .setName(this.name)
-            .setDescription(this.description)
     }
 }

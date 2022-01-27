@@ -1,7 +1,8 @@
 # Discord Bot Core
 # This file must be placed in the same folder as where you run `npm start` or `node .` (for ./dist)
 
-token: "your amazing bot token"
+token: "your token"
+prefix: "your prefix"
 
 # =====================================
 # =           STYLE OPTIONS           =

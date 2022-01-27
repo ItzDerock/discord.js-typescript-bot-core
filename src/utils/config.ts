@@ -8,6 +8,7 @@ const logger = createLogger('config');
 
 export type DiscordBotConfig = {
     token: string;
+    prefix: string;
     embeds: {
         primary: APIEmbed
         error: APIEmbed
