@@ -3,7 +3,7 @@ import getConfig from './utils/config';
 const config = getConfig();
 
 export const client = new Discord.Client({
-    intents: [Discord.Intents.FLAGS.GUILDS]
+    intents: [Discord.IntentsBitField.Flags.Guilds]
 });
 
 import fs from 'fs';

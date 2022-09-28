@@ -1,5 +1,5 @@
-# Discord.js v13 Bot Skeleton/Core
-This repository is a template for creating a Discord bot using Discord.js v13 with Slash Command support.
+# Discord.js v14 Bot Skeleton/Core
+This repository is a template for creating a Discord bot using Discord.js v14 with Slash Command support.
 
 > This project is for people familiar with TypeScript and Discord.js. Do NOT use if you are unfamiliar with either.
 > No Discord.js/TypeScript support will be given!
@@ -53,9 +53,8 @@ Copy and paste the `example.ts` file.
 Example command with a boolean and string option.
 ```js
 import SlashCommand from "../structures/Command";
-import { Client, CommandInteraction } from "discord.js";
+import { Client, CommandInteraction, SlashCommandBuilder } from "discord.js";
 import { primaryEmbed } from "../utils/embeds";
-import { SlashCommandBuilder } from "@discordjs/builders";
 import { RESTPostAPIApplicationCommandsJSONBody } from "discord-api-types";
 
 export default class ExampleCommand extends SlashCommand {
@@ -74,12 +73,11 @@ export default class ExampleCommand extends SlashCommand {
         });
     }
 
-    build(client: Client<boolean>): SlashCommandBuilder | RESTPostAPIApplicationCommandsJSONBody {
-        return new SlashCommandBuilder()
+    build(client: Client<boolean>, defaultCommand: SlashCommandBuilder) {
+        return defaultCommand
             .addBooleanOption(boolean => boolean.setName('boolean').setDescription('test boolean option').setRequired(true))
             .addStringOption(string => string.setName('string').setDescription('test string option').setRequired(true))
             .toJSON();
-
     }
 }
 ```

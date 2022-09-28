@@ -4,8 +4,8 @@ import bunyanFormat from 'bunyan-format';
 const bFormat = bunyanFormat({ outputMode: 'short' });
 const loggers = new Map<string, bunyan>();
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 const logDir = path.join(process.cwd(), 'logs');
 
 if(!fs.existsSync(logDir)) {

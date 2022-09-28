@@ -1,10 +1,9 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
 import { client, commands } from '..';
 import Event from '../structures/Event';
 import { discordLogger } from '../utils/logger';
 import SlashCommand from '../structures/Command';
-import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types';
-import { ApplicationCommandData } from 'discord.js';
+import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v10';
+import { ApplicationCommandData, SlashCommandBuilder } from 'discord.js';
 
 const truthyFilter = <T>(x: T | false | undefined | "" | 0): x is T => !!x;
 
@@ -70,7 +69,11 @@ export default class ReadyEvent extends Event {
 }
 
 function buildSlashCommand(command: SlashCommand): RESTPostAPIApplicationCommandsJSONBody {
-    var data = command.build(client);
+    const defaultOptions = new SlashCommandBuilder()
+        .setName(command.name)
+        .setDescription(command.description)
+
+    var data = command.build(client, defaultOptions);
     if(data instanceof SlashCommandBuilder) data = data.toJSON();
 
     return data;

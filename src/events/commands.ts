@@ -9,7 +9,7 @@ export default class CommandHandler extends Event {
     constructor() { super('Command', 'interactionCreate'); };
 
     exec(interaction: discord.Interaction) {
-        if(!interaction.isCommand()) return;
+        if(!interaction.isChatInputCommand()) return;
         
         const commandName = interaction.commandName;
         const commandData = commands.get(commandName.toLowerCase());
